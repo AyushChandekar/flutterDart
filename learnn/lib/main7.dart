@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learnn/widgets/navbarWidget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,19 +31,7 @@ class _MyAppState extends State<MyApp> {
       ),
       home: Scaffold(
         appBar: AppBar(title: Text("uno dos tres")),
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-            NavigationDestination(icon: Icon(Icons.place), label: "Location"),
-            NavigationDestination(icon: Icon(Icons.person), label: "Profile"),
-          ],
-          onDestinationSelected: (value) => {
-            setState(() {
-              currIndex = value;
-            }),
-          },
-          selectedIndex: currIndex,
-        ),
+        bottomNavigationBar: navbarWidget(),
       ),
     );
   }
