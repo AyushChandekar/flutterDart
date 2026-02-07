@@ -4,6 +4,7 @@ void main() {
   runApp(const MyApp());
 }
 
+String title ='Flutter Mapp';
 //stateless
 //material app  -this is theme of the app
 //scaffold      - this is the skeleton of the app
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text('Massaging'), centerTitle: true),
+        appBar: AppBar(title: Text(title), centerTitle: true),
         bottomNavigationBar: NavigationBar(
           destinations: [
             NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
