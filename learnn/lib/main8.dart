@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:learnn/views/widgets/navbarWidget.dart';
+import 'package:learnn/views/widgetTree.dart';
 
 void main() {
   runApp(const MyApp());
 }
-
-//Material App (StateFul)
-//Scaffold
-//App title
-//Bottom navigation bar (setState)
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -29,10 +24,7 @@ class _MyAppState extends State<MyApp> {
           brightness: Brightness.dark,
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: Text("uno dos tres")),
-        bottomNavigationBar: navbarWidget(),
-      ),
+      home: widgetTree(),
     );
   }
 }
