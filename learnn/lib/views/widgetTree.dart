@@ -5,7 +5,7 @@ import 'package:learnn/views/pages/locationPage.dart';
 import 'package:learnn/views/pages/profilePage.dart';
 import 'package:learnn/views/widgets/navbarWidget.dart';
 
-List<Widget> pages = [homePage(),locationPage(),profilePage()];
+List<Widget> pages = [homePage(), locationPage(), profilePage()];
 
 class widgetTree extends StatelessWidget {
   const widgetTree({super.key});
@@ -13,10 +13,29 @@ class widgetTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Holly Meal")),
-      body: ValueListenableBuilder(valueListenable: selectedPageNotifer, builder: (context, selectedPage, child) {
-        return pages.elementAt(selectedPage);  
-      },),
+      appBar: AppBar(
+        title: Text("Holly Meal"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              isDarkModeNotifier.value = !isDarkModeNotifier.value; 
+            },
+            icon: ValueListenableBuilder(
+              valueListenable: isDarkModeNotifier,
+              builder: (context, isDarkMode, child) {
+                return Icon(
+                  isDarkMode? Icons.light_mode: Icons.dark_mode,);
+              },
+            ),
+          ),
+        ],
+      ),
+      body: ValueListenableBuilder(
+        valueListenable: selectedPageNotifer,
+        builder: (context, selectedPage, child) {
+          return pages.elementAt(selectedPage);
+        },
+      ),
       bottomNavigationBar: navbarWidget(),
     );
   }
