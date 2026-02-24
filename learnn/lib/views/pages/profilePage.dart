@@ -38,7 +38,7 @@ class _profilePageState extends State<profilePage> {
             ),
             CheckboxListTile(
               tristate: true,
-              title: Text("Click me"),
+              title: Text("Click me 🥹"),
               value: isChecked,
               onChanged: (bool? value) {
                 setState(() {
@@ -76,9 +76,96 @@ class _profilePageState extends State<profilePage> {
                 print(sliderValue);
               },
             ),
-            Image.asset('assets/images/ezgif.com-effects.gif'),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  splashColor: const Color.fromARGB(255, 54, 212, 244),
+                  onTap: () {
+                    print('faultie boxie😗clicked bruh');
+                  },
+                  child: Container(
+                    height: 100,
+                    width: 100,
+
+                    decoration: BoxDecoration(
+                      // Replace color with decoration
+                      color: const Color.fromARGB(31, 128, 105, 149),
+                      borderRadius: BorderRadius.circular(12), // Add this
+                    ),
+                  ),
+                ),
+                //issued one ~ ^
+                Ink(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(18, 128, 105, 149),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: InkWell(
+                    splashColor: const Color.fromARGB(255, 111, 37, 222),
+                    borderRadius: BorderRadius.circular(12),
+                    onTap: () {
+                      print('boxie😘clicked bruh');
+                    },
+                    child: Container(height: 100, width: 100),
+                  ),
+                ),
+              ],
+            ),
+
+            // fixed one ^
+            GestureDetector(
+              onTap: () {
+                print('giffie clicked bruh');
+              },
+              child: Image.asset('assets/images/ezgif.com-effects.gif'),
+            ),
+
             Image.asset('assets/images/pxfuel.jpg'),
-      
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(174, 3, 137, 57),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                shadowColor: const Color.fromARGB(255, 246, 255, 0),
+              ),
+              child: Text("submit"),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(174, 3, 137, 57),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                shadowColor: const Color.fromARGB(255, 246, 255, 0),
+              ),
+              child: Text("submit"),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text("submit🧟‍♀️"),
+            ),
+            FilledButton(
+              onPressed: () {},
+              child: Text("submit🤑"),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text("submit🕹️"),
+            ),
+            OutlinedButton(
+              onPressed: () {},
+              child: Text("submit👆"),
+            ),
+            CloseButton(
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add),
+            ),
+            BackButton(
+              color: Colors.blue,
+            )
           ],
         ),
       ),
