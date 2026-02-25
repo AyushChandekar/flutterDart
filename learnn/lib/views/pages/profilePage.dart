@@ -14,6 +14,7 @@ class _profilePageState extends State<profilePage> {
   bool? isCheckedw = false;
   bool isSwitched = false;
   double sliderValue = 0.0;
+  String? menuItem;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -21,6 +22,19 @@ class _profilePageState extends State<profilePage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            DropdownButton(
+              value:menuItem,
+              items: [
+                DropdownMenuItem(child: Text("other1"), value: "other1"),
+                DropdownMenuItem(child: Text("other2"), value: "other2"),
+                DropdownMenuItem(child: Text("other3"), value: "other3"),
+              ],
+              onChanged: (String? value) {
+                setState(() {
+                  menuItem = value;
+                });
+              },
+            ),
             TextField(
               controller: controller,
               decoration: InputDecoration(border: OutlineInputBorder()),
@@ -132,40 +146,13 @@ class _profilePageState extends State<profilePage> {
               ),
               child: Text("submit"),
             ),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color.fromARGB(174, 3, 137, 57),
-                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                shadowColor: const Color.fromARGB(255, 246, 255, 0),
-              ),
-              child: Text("submit"),
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text("submit🧟‍♀️"),
-            ),
-            FilledButton(
-              onPressed: () {},
-              child: Text("submit🤑"),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text("submit🕹️"),
-            ),
-            OutlinedButton(
-              onPressed: () {},
-              child: Text("submit👆"),
-            ),
-            CloseButton(
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.add),
-            ),
-            BackButton(
-              color: Colors.blue,
-            )
+            ElevatedButton(onPressed: () {}, child: Text("submit🧟‍♀️")),
+            FilledButton(onPressed: () {}, child: Text("submit🤑")),
+            TextButton(onPressed: () {}, child: Text("submit🕹️")),
+            OutlinedButton(onPressed: () {}, child: Text("submit👆")),
+            CloseButton(),
+            IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+            BackButton(color: Colors.blue),
           ],
         ),
       ),
