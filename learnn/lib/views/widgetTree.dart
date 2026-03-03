@@ -39,7 +39,7 @@ class widgetTree extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return SettingsPage();
+                    return SettingsPage(title:"setting hai");
                   },
                 ),
               );
