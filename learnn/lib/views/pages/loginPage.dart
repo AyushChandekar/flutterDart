@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learnn/views/widgetTree.dart';
 import 'package:learnn/views/widgets/heroWidget.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,8 +10,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController controller = TextEditingController();
-
+  TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
+  String confirmedEmail = "123";
+  String confirmedPassword = "456";
   @override
   void initState() {
     // TODO: implement initState
@@ -21,7 +24,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void dispose() {
     // TODO: implement dispose
-    controller.dispose();
+    controllerEmail.dispose();
+    controllerPassword.dispose();
     super.dispose();
   }
 
@@ -34,14 +38,57 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: [
             heroWidget(title: "Login Here"),
+            SizedBox(height: 20),
             TextField(
-              controller: controller,
-              decoration: InputDecoration(border: OutlineInputBorder()),
+              controller: controllerEmail,
+              decoration: InputDecoration(
+                hint: Text("Enter Email"),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
               onEditingComplete: () => setState(() {}),
+            ),
+            SizedBox(height: 10),
+            TextField(
+              controller: controllerEmail,
+              decoration: InputDecoration(
+                hint: Text("Enter Password"),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              onEditingComplete: () => setState(() {}),
+            ),
+            SizedBox(height: 20),
+            FilledButton(
+              onPressed: () {
+                onLoginPressed();
+              },
+              child: Text('Get Started'),
+              style: FilledButton.styleFrom(
+                minimumSize: Size(double.infinity, 45.0),
+                backgroundColor: const Color.fromARGB(255, 55, 136, 228),
+              ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void onLoginPressed() {
+    if (confirmedEmail == controllerEmail.text &&
+        confirmedPassword == controllerPassword.text) {
+      Navigator.pushReplacement(
+        //here instead of push we can also use pushreplacement which actually replaces the page instead of stacking it.
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return widgetTree();
+          },
+        ),
+      );
+    }
   }
 }

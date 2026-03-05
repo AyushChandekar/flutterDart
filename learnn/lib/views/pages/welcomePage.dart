@@ -28,7 +28,7 @@ class WelcomePage extends StatelessWidget {
             ),
             FilledButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   //here instead of push we can also use pushreplacement which actually replaces the page instead of stacking it.
                   context,
                   MaterialPageRoute(
@@ -46,7 +46,7 @@ class WelcomePage extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   //here instead of push we can also use pushreplacement which actually replaces the page instead of stacking it.
                   context,
                   MaterialPageRoute(
