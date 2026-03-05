@@ -36,9 +36,13 @@ class _SettingsPageState extends State<SettingsPage> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(duration: Duration(seconds: 5),content: Text("Hello"),behavior: SnackBarBehavior.floating,));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      duration: Duration(seconds: 5),
+                      content: Text("Hello"),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
                 },
                 child: Text("Open Snackbar"),
               ),
@@ -159,20 +163,44 @@ class _SettingsPageState extends State<SettingsPage> {
 
               Image.asset('assets/images/pxfuel.jpg'),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        //instead of alertdiaglog we can also use aboutdialog it has default license content
+                        title: Text("Alert Text"),
+                        content: Text("Alert content"),
+                        actions: [
+                          FilledButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("Close"),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(174, 3, 137, 57),
                   foregroundColor: const Color.fromARGB(255, 255, 255, 255),
                   shadowColor: const Color.fromARGB(255, 246, 255, 0),
                 ),
-                child: Text("submit"),
+                child: Text("Open Dialog"),
               ),
+              Divider(),
               ElevatedButton(onPressed: () {}, child: Text("submit🧟‍♀️")),
+              Divider(color: Colors.teal, thickness: 5.0),
               FilledButton(onPressed: () {}, child: Text("submit🤑")),
+              Divider(),
               TextButton(onPressed: () {}, child: Text("submit🕹️")),
+              Divider(color: Colors.teal, thickness: 5.0, endIndent: 20.0),
               OutlinedButton(onPressed: () {}, child: Text("submit👆")),
               CloseButton(),
               IconButton(onPressed: () {}, icon: Icon(Icons.add)),
+              Container(height: 50.0, child: VerticalDivider()),
               BackButton(color: Colors.blue),
             ],
           ),
