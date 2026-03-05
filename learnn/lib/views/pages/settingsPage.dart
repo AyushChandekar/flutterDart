@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key,required this.title,});
+  const SettingsPage({super.key, required this.title});
   final String title;
 
   @override
@@ -34,6 +34,14 @@ class _SettingsPageState extends State<SettingsPage> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              ElevatedButton(
+                onPressed: () {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(duration: Duration(seconds: 5),content: Text("Hello"),behavior: SnackBarBehavior.floating,));
+                },
+                child: Text("Open Snackbar"),
+              ),
               DropdownButton(
                 value: menuItem,
                 hint: Text("clikie"),
