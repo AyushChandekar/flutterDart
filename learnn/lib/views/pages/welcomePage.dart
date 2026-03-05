@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learnn/views/widgetTree.dart';
+import 'package:learnn/views/pages/loginPage.dart';
 import 'package:learnn/views/widgets/heroWidget.dart';
 import 'package:lottie/lottie.dart';
 
@@ -15,7 +15,7 @@ class WelcomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Lottie.asset('assets/lotties/EarthRotating.json', height: 200),
-            FittedBox(child: heroWidget()),
+            FittedBox(child: heroWidget(title: "Flutter Map")),
             FittedBox(
               child: Text(
                 'Flutter Map',
@@ -33,12 +33,12 @@ class WelcomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return widgetTree();
+                      return LoginPage();
                     },
                   ),
                 );
               },
-              child: Text('Login'),
+              child: Text('Get Started'),
               style: FilledButton.styleFrom(
                 minimumSize: Size(double.infinity, 45.0),
                 backgroundColor: const Color.fromARGB(255, 55, 136, 228),
@@ -51,12 +51,12 @@ class WelcomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return widgetTree();
+                      return LoginPage();
                     },
                   ),
                 );
               },
-              child: Text("Sign In"),
+              child: Text("Login In"),
               style: FilledButton.styleFrom(
                 minimumSize: Size(double.infinity, 45.0),
               ),

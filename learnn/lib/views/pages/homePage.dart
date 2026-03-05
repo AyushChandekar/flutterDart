@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learnn/data/constant.dart';
-import 'package:learnn/main.dart';
 import 'package:learnn/views/widgets/heroWidget.dart';
 
 class homePage extends StatelessWidget {
@@ -12,7 +11,7 @@ class homePage extends StatelessWidget {
       padding: EdgeInsets.all(20.0),
       child: Column(
         children: [
-          heroWidget(),
+          heroWidget(title: "Homie"),
 
           Container(
             width: double.infinity,
