@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:learnn/data/constant.dart';
 import 'package:learnn/data/notifiers.dart';
 import 'package:learnn/views/pages/homePage.dart';
 import 'package:learnn/views/pages/locationPage.dart';
 import 'package:learnn/views/pages/profilePage.dart';
 import 'package:learnn/views/pages/settingsPage.dart';
 import 'package:learnn/views/widgets/navbarWidget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 List<Widget> pages = [homePage(), locationPage(), ProfilePage()];
 
@@ -23,7 +25,9 @@ class widgetTree extends StatelessWidget {
         title: Text("Holly Meal"),
         actions: [
           IconButton(
-            onPressed: () {
+            onPressed: () async{
+              final SharedPreferences prefs = await SharedPreferences.getInstance();
+              await prefs.setBool(KConstants.themeModeKey, true);
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
             },
             icon: ValueListenableBuilder(
