@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
   void onLoginPressed() {
     if (confirmedEmail == controllerEmail.text &&
         confirmedPassword == controllerPassword.text) {
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         //here instead of push we can also use pushreplacement which actually replaces the page instead of stacking it.
         context,
         MaterialPageRoute(
@@ -93,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
             return widgetTree();
           },
         ),
+        (route)=>false,
       );
     }
   }

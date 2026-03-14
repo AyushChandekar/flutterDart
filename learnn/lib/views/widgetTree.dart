@@ -19,16 +19,17 @@ class widgetTree extends StatelessWidget {
       appBar: AppBar(
         // leading: BackButton(
         //   onPressed: () {
-        //     Navigator.pop(context);  // this will crash the app cause there is no page before this 
+        //     Navigator.pop(context);  // this will crash the app cause there is no page before this
         //   },
         // ),
         title: Text("Holly Meal"),
         actions: [
           IconButton(
-            onPressed: () async{
-              final SharedPreferences prefs = await SharedPreferences.getInstance();
-              await prefs.setBool(KConstants.themeModeKey, true);
+            onPressed: () async {
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
+              final SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+              await prefs.setBool(KConstants.themeModeKey, isDarkModeNotifier.value);
             },
             icon: ValueListenableBuilder(
               valueListenable: isDarkModeNotifier,
@@ -39,11 +40,12 @@ class widgetTree extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {
-              Navigator.push( //here instead of push we can also use pushreplacement which actually replaces the page instead of stacking it.
+              Navigator.push(
+                //here instead of push we can also use pushreplacement which actually replaces the page instead of stacking it.
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return SettingsPage(title:"setting hai");
+                    return SettingsPage(title: "setting hai");
                   },
                 ),
               );
