@@ -18,3 +18,10 @@ class KTextStyle {
     letterSpacing: 1.0,
   );
 }
+
+class KValue {
+  static const String basicLayout = "Basic Layout";
+  static const String cleanUI = "Clean UI";
+  static const String fixBugs = "fix bugs";
+  static const String keyConcepts = "key concpet";
+}
