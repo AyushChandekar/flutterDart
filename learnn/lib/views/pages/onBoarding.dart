@@ -17,9 +17,9 @@ class OnBoardingPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset("assets/lotties/Home.json",height:400.0),
-              SizedBox(height: 20),
+              Lottie.asset("assets/lotties/Welcome.json",height:350.0),
               Text("Flutter Mapp is the way to learn flutter,period",style:KTextStyle.descriptionText),
+              SizedBox(height: 15),
               FilledButton(
                 onPressed: () {
                   Navigator.push(

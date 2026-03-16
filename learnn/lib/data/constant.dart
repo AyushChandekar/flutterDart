@@ -12,7 +12,7 @@ class KTextStyle {
     letterSpacing: 2.0,
   );
   static const TextStyle descriptionText = TextStyle(
-    color: Colors.white38,
+    color: Color.fromARGB(169, 79, 76, 76),
     fontSize: 16.0,
     fontWeight: FontWeight.w100,
     letterSpacing: 1.0,
