@@ -16,12 +16,13 @@ class homePage extends StatelessWidget {
       KValue.keyConcepts,
     ];
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 10.0),
       child: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 10.0,),
             heroWidget(title: "Homie",nextPage:CoursePage()),
-
+            SizedBox(height: 10.0,),
             ContainerWidget(
               title: "Basic Layout",
               description: "this is a description",
