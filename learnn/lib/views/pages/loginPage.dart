@@ -32,53 +32,65 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    double widthScreen = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
-            child: FractionallySizedBox(
-              widthFactor: 0.5,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Lottie.asset("assets/lotties/Home.json",height:400.0),
-                  TextField(
-                    controller: controllerEmail,
-                    decoration: InputDecoration(
-                      hint: Text("Enter Email"),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+            child: LayoutBuilder(
+              builder: (context,BoxConstraints constraints) {
+                return FractionallySizedBox(
+                  // widthFactor: constraints.maxWidth > 500 ? 0.5:1.0,  this will also work 
+                  widthFactor: widthScreen > 500 ? 0.5:1.0, //this is another way to do same thing
+                  
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Lottie.asset("assets/lotties/Home.json", height: 400.0),
+                      TextField(
+                        controller: controllerEmail,
+                        decoration: InputDecoration(
+                          hint: Text("Enter Email"),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onEditingComplete: () => setState(() {}),
                       ),
-                    ),
-                    onEditingComplete: () => setState(() {}),
-                  ),
-                  SizedBox(height: 10),
-                  TextField(
-                    controller: controllerPassword,
-                    decoration: InputDecoration(
-                      hint: Text("Enter Password"),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
+                      SizedBox(height: 10),
+                      TextField(
+                        controller: controllerPassword,
+                        decoration: InputDecoration(
+                          hint: Text("Enter Password"),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onEditingComplete: () => setState(() {}),
                       ),
-                    ),
-                    onEditingComplete: () => setState(() {}),
+                      SizedBox(height: 20),
+                      FilledButton(
+                        onPressed: () {
+                          onLoginPressed();
+                        },
+                        child: Text(widget.title),
+                        style: FilledButton.styleFrom(
+                          minimumSize: Size(double.infinity, 45.0),
+                          backgroundColor: const Color.fromARGB(
+                            255,
+                            55,
+                            136,
+                            228,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 50.0),
+                    ],
                   ),
-                  SizedBox(height: 20),
-                  FilledButton(
-                    onPressed: () {
-                      onLoginPressed();
-                    },
-                    child: Text(widget.title),
-                    style: FilledButton.styleFrom(
-                      minimumSize: Size(double.infinity, 45.0),
-                      backgroundColor: const Color.fromARGB(255, 55, 136, 228),
-                    ),
-                  ),
-                  SizedBox(height: 50.0),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ),
@@ -97,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
             return widgetTree();
           },
         ),
-        (route)=>false,
+        (route) => false,
       );
     }
   }
