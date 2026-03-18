@@ -15,15 +15,15 @@ class CoursePage extends StatefulWidget {
 }
 
 class _CoursePageState extends State<CoursePage> {
-  late Activity
-  activity; //late means latter we will set this value and null for now
+  // late Activity
+  // activity; //late means latter we will set this value and null for now
   @override
   void initState() {
     getData();
     super.initState();
   }
 
-  void getData() async {
+  Future getData() async {
     var url = Uri.https('bored-api.appbrewery.com', '/random');
 
     var response = await http.get(url);
@@ -39,10 +39,10 @@ class _CoursePageState extends State<CoursePage> {
     if (response.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      activity = Activity.fromJson(
+      return Activity.fromJson(
         jsonDecode(response.body) as Map<String, dynamic>,
       );
-      print(activity.activity);
+      // print(activity.activity);
     } else {
       throw Exception('Failed to load album');
     }
@@ -53,13 +53,37 @@ class _CoursePageState extends State<CoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [heroWidget(title: "Course", nextPage: OnBoardingPage())],
-          ),
-        ),
+      body: FutureBuilder(
+        future: getData(),
+        builder: (context, AsyncSnapshot snapshot) {
+          Widget widgetie;
+          // snapshot is used to check whether data is loading or has been loaded.
+          // It shows a loading indicator first, then displays the data.
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            widgetie = Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasData) {
+            Activity activitys = snapshot.data;
+            widgetie = Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    heroWidget(
+                      title: activitys.activity,
+                      nextPage: OnBoardingPage(),
+                    ),
+                    SizedBox(height: 20),
+                    Text("Type: ${activitys.activity}"),
+                  ],
+                ),
+              ),
+            );
+          } else {
+            widgetie = Center(child: Text("Error"));
+          }
+          return widgetie;
+        },
       ),
     );
   }
