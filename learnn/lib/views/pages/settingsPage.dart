@@ -1,5 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:learnn/views/pages/expandableFlexiblePage.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key, required this.title});
@@ -186,9 +186,24 @@ class _SettingsPageState extends State<SettingsPage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(174, 3, 137, 57),
                   foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                  shadowColor: const Color.fromARGB(255, 246, 255, 0),
+                  shadowColor: const Color.fromARGB(255, 232, 237, 72),
                 ),
                 child: Text("Open Dialog"),
+              ),
+              SizedBox(height: 10.0,),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    //here instead of push we can also use pushreplacement which actually replaces the page instead of stacking it.
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return ExpandableFlexiblePage();
+                      },
+                    ),
+                  );
+                },
+                child: Text("show Flexible and Expanded"),
               ),
               Divider(),
               ElevatedButton(onPressed: () {}, child: Text("submit🧟‍♀️")),

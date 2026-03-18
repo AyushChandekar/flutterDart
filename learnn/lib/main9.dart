@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       builder: (context, isDarkMode, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
+          theme: ThemeData( 
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.purple,
               brightness: isDarkMode ? Brightness.dark : Brightness.light,
