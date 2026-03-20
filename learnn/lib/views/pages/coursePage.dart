@@ -17,6 +17,8 @@ class CoursePage extends StatefulWidget {
 class _CoursePageState extends State<CoursePage> {
   // late Activity
   // activity; //late means latter we will set this value and null for now
+  
+  bool isfirst = false;
   @override
   void initState() {
     getData();
@@ -52,7 +54,13 @@ class _CoursePageState extends State<CoursePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text("Random Activity Viewer"), actions: [
+        IconButton(onPressed: () {
+          setState(() {
+            isfirst = !isfirst;
+          });
+        }, icon: Icon(Icons.switch_access_shortcut_add_rounded))
+      ]),
       body: FutureBuilder(
         future: getData(),
         builder: (context, AsyncSnapshot snapshot) {
@@ -67,15 +75,24 @@ class _CoursePageState extends State<CoursePage> {
             widgetie = Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    heroWidget(
-                      title: activitys.activity,
-                      nextPage: OnBoardingPage(),
-                    ),
-                    SizedBox(height: 20),
-                    Text("Type: ${activitys.activity}"),
-                  ],
+                child: AnimatedCrossFade(
+                  firstChild: Column(
+                    children: [
+                      heroWidget(
+                        title: activitys.activity,
+                        nextPage: OnBoardingPage(),
+                      ),
+                      SizedBox(height: 20),
+                      Text("Type: ${activitys.activity}"),
+                    ],
+                  ),
+                  secondChild: Center(
+                    child: Image.asset("assets/images/pxfuel.jpg"),
+                  ),
+                  crossFadeState: isfirst
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                  duration: Duration(milliseconds: 500),
                 ),
               ),
             );
